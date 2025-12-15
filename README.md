@@ -8,7 +8,7 @@ I'd have called it a day but I found this paper which has an interesting perspec
 - **SGD** depends on spectral norm: $\|\nabla^2 L\|_2$
 - **Adam** depends on (1,1)-norm: $\|\nabla^2 L\|_{1,1}$
 
-Adam's convergence bound depends on the sum of entries on the hessian, thus the interaction of the gradients of the parameters, we get this because of the variance scaling of the gradient for the update, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
+Adam's convergence bound depends on the sum of entries on the hessian, thus the second order interaction of the gradients of the parameters, we get this because of the variance scaling of the gradient for the update, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
 
 SGD's convergence bound on the other hand only depends on the maximum eigenvalue of the hessian, i.e  the maximum curvature of the loss landscape
 
@@ -25,9 +25,9 @@ Intuitively rotating the loss landscape doesn't change the spectral norm, since 
 
 The hessian tells us how the loss landscape is affected by moving in any direction on it, almost like curvature/evolution, thus a diagonal hessian would be like, "imagine a loss landscape with 3 dimensions, moving in dimension 1 should not affect dimension 2 or 3".  Its kinda impossible for neural networks to have an identity hessian as it would mean each parameter has its own loss component, but it seems to be more separable than expected
 
-They observed that (1,1)-norm of the hessian is often smaller than the d×spectral norm suggesting that for a lot of neural networks / including transformers, this suggests the parameters are often more separable, i.e NNs seems to like the L∞ geometry, though this is slightly inaccurate, they never directly measured if the off diagonals are smaller than the diagonals of the hessian, but rotation does justifiably smear off-diagonals and the increasing of the (1,1)-norm suggests something close is happening
+They observed that (1,1)-norm of the hessian is often smaller than the d×spectral norm suggesting that for a lot of neural networks the parameters tends to be independent, this also intuitively means NNs seems to like the L∞ geometry, though this is slightly inaccurate, they never directly measured if the off diagonals are smaller than the diagonals of the hessian, but rotation does justifiably smear off-diagonals and the increasing of the (1,1)-norm suggests something close is happening
 
-All in all neural network parameters tend to be more separable, thus sgd's update forces them to operate on the non-optimal l2 geometry, this geometery forces parameters to have second order interactions which is inoptimal, Adam's updates treats the loss landscape on the L∞ geometry which is more suitable for the nature of neural networks.
+All in all neural network naturally tend to prefer separable loss landscape evolution, sgd's update forces them to operate on the non-optimal l2 geometry, which forces parameters to have second order interactions which turns out to be suboptimal, Adam's updates treats the loss landscape on the L∞ geometry which is more suitable.
 
 
 == See `run.py` to experiment with this
