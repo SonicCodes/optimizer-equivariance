@@ -6,6 +6,7 @@ I'd have called it a day but I found this paper which has an interesting perspec
 
 ### Smoothness constant ... Convergence Bounds:
 SGD (spectral norm of the hessian) : $T \propto \|\nabla^2 L\|_2 = \lambda_{\max}(H)$
+
 Adam (1,1-norm of the hessian) : $T \propto \frac{\|\nabla^2 L\|_{1,1}}{\varepsilon^2}$
 
 Adam's convergence bound depends on the sum of entries on the hessian, thus the interaction of the gradients of the parameters, we get this because of the variance scaling of the gradient for the update, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
