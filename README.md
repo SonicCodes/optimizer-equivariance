@@ -8,7 +8,7 @@ I'd have called it a day but I found this paper which has an interesting perspec
 - **SGD** under the L2 norm has smoothness constant: $\|\nabla^2 L\|_2$
 - **Adam** under the L-inf norm has a smoothness constant: $\|\nabla^2 L\|_{1,1}$
 
-They justified adam's smoothness under the linf norm and derived the convergence bound and spectral bound from those assumptions, under these assumptions the spectral constant depends on the sum of entries on the hessian, thus the second order interaction of the gradients of the parameters, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
+They justified adam's smoothness under the linf norm and derived the convergence bound and smoothness constant from those assumptions, under these assumptions the smoothness constant depends on the sum of entries on the hessian, thus the second order interaction of the gradients of the parameters, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
 
 SGD's convergence bound on the other hand only depends on the maximum eigenvalue of the hessian, i.e  the maximum curvature of the loss landscape
 
