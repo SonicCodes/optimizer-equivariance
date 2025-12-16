@@ -5,8 +5,8 @@ I have sorta always thought the reason Adam outperforms SGD is the adaptive per 
 I'd have called it a day but I found this paper which has an interesting perspective over adam's property, it uses the convergence bound of these optimizers and empirical tests on models to make a case to why we would need to use adam over sgd, 
 
 ### Smoothness constant ... Convergence Bounds:
-- **SGD** under the L2 norm has spectral constant: $\|\nabla^2 L\|_2$
-- **Adam** under the L-inf norm has a spectral constant: $\|\nabla^2 L\|_{1,1}$
+- **SGD** under the L2 norm has smoothness constant: $\|\nabla^2 L\|_2$
+- **Adam** under the L-inf norm has a smoothness constant: $\|\nabla^2 L\|_{1,1}$
 
 They justified adam's smoothness under the linf norm and derived the convergence bound and spectral bound from those assumptions, under these assumptions the spectral constant depends on the sum of entries on the hessian, thus the second order interaction of the gradients of the parameters, the bound ends up including the sum of the per-coordinate curvature of the loss landscape,
 
